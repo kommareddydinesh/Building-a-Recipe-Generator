@@ -40,7 +40,7 @@ It returns detailed recipe information including ingredients, steps, time requir
    python recipe_finder.py
 - Enter a comma-separated list of ingredients when prompted:
     ```bash
-    What ingredients do you have? (Separate with commas):paneer, capsicum, cumin
+    What ingredients do you have? (Separate with commas):chicken, garlic, lemon
 - The script fetches and displays a matching recipe.
 - If you choose to save the recipe:
    [Want to save this recipe to a text file? (yes/no): yes}
