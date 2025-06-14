@@ -54,21 +54,22 @@ It returns detailed recipe information including ingredients, steps, time requir
     
 **🧱 Code Explanation**
 - **✅ 1. Importing Required Module:**
-    ```import requests
-    ---
+    ```python
+    import requests
 - requests is used to make HTTP calls to the Spoonacular API.
 - **🔐 2. Configuration:**
-    ``` API_KEY = "# ← REPLACE THIS with your key"
-        BASE_URL = "https://api.spoonacular.com"
-    ---  
+    ```python
+     API_KEY = "# ← REPLACE THIS with your key"
+     BASE_URL = "https://api.spoonacular.com"  
 -API_KEY: Your access key to use the Spoonacular API.
 - BASE_URL: The base URL for all API endpoints.
 - **🧾 3. Take Input from User:**
-    ```user_input = input("What ingredients do you have? (Separate with commas): ")
-    ---
+    ```python
+    user_input = input("What ingredients do you have? (Separate with commas): ")
 -Asks the user to type in a comma-separated list of ingredients, e.g., "chicken, garlic, lemon".
 - **🍽️ 4. Find Recipe Based on Ingredients:**
-    ```find_recipe_url = f"{BASE_URL}/recipes/findByIngredients"
+    ```python
+    find_recipe_url = f"{BASE_URL}/recipes/findByIngredients"
 lookup_params = {
     "ingredients": user_input,
     "number": 1,
@@ -76,74 +77,75 @@ lookup_params = {
     "ignorePantry": True,
     "apiKey": API_KEY
 }
-    ---
 - URL for the API call to search for recipes.
 - number=1: Only fetches one recipe.
 - ranking=1: Prioritizes recipes that use the most ingredients you have.
 - ignorePantry=True: Ignores common pantry items like water, salt, etc.
-  ```search_result = requests.get(find_recipe_url, params=lookup_params)
-  ---
+  ```python
+  search_result = requests.get(find_recipe_url, params=lookup_params)
 - Makes the actual API call.
 - **🚨 5. Handle Errors:**
-  ```if search_result.status_code != 200:
+  ```python
+  if search_result.status_code != 200:
     print("Hmm, something went wrong:", search_result.json())
     exit(1)
-  ---
 - If the API call fails, prints the error and exits the program.
 - **🥇 6. Parse the First Recipe:**
-  ```recipe_data = search_result.json()
+  ```python
+  recipe_data = search_result.json()
 if not recipe_data:
     print("Couldn't find any recipe with those ingredients.")
-    exit()
-    ---
+    exit()    
 - If the list is empty, no recipe was found.
-  ```first_recipe = recipe_data[0]
+  ```python
+  first_recipe = recipe_data[0]
 print("\n=== Found a Recipe! ===")
 print(f"Title: {first_recipe['title']}")
 print(f"Used: {[item['name'] for item in first_recipe['usedIngredients']]}")
 print(f"Missing: {[item['name'] for item in first_recipe['missedIngredients']]}")
 print(f"Image Preview: {first_recipe['image']}")
-    ---
 -Shows basic recipe details including:
     - Used & missing ingredients
     - Image preview link
 - **📋 7. Fetch Full Recipe Information:**
-     ```recipe_id = first_recipe['id']
+     ```python
+     recipe_id = first_recipe['id']
 details_url = f"{BASE_URL}/recipes/{recipe_id}/information"
 details_params = {
     "includeNutrition": False,
     "apiKey": API_KEY
-}    ----
+}
 details_response = requests.get(details_url, params=details_params)
 - Uses the recipe ID to fetch full instructions, time, ingredients, servings, etc.
-      ```if details_response.status_code != 200:
+      ```python
+  if details_response.status_code != 200:
     print("Ugh, failed to fetch full recipe info:", details_response.json())
     exit()
-       ---
 - Handles error if second API call fails.
 - **📤 8. Display Full Recipe:**
-   ```details = details_response.json()
+   ```python
+   details = details_response.json()
 print("\n=== Full Recipe Info ===")
 print(f"Title: {details['title']}")
 print(f"Time Required: {details['readyInMinutes']} mins")
 print(f"Servings: {details['servings']}")
 print(f"Link: {details['sourceUrl']}")
-    ---
 - Displays title, time, servings, and a link to the full recipe.
       ```print("\nIngredients Needed:")
 for ing in details['extendedIngredients']:
     print(f"- {ing['original']}")
       ---
 - Shows a nicely formatted ingredients list.
-    ```print("\nHow to Make It:")
+    ```python
+    print("\nHow to Make It:")
 if details.get('instructions'):
     print(details['instructions'])
 else:
     print("No instructions were provided. Might be a good time to improvise!")
-      ----
 - Displays instructions if available.
 - **💾 9. Optionally Save to File:**
-- ```save_choice = input("\nWant to save this recipe to a text file? (yes/no): ").strip().lower()
+  ```python
+  save_choice = input("\nWant to save this recipe to a text file? (yes/no): ").strip().lower()
 if save_choice == "yes":
     try:
         with open("generated_recipe.txt", "w", encoding="utf-8") as f:
@@ -159,7 +161,6 @@ if save_choice == "yes":
         print("✅ All done! Saved to 'generated_recipe.txt'")
     except Exception as e:
         print(f"Something went wrong while saving the file: {e}")
-
 -If user says "yes", it writes the recipe details into a file named generated_recipe.txt.
 - Proper error handling in case file write fails.
   
