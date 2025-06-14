@@ -1,7 +1,7 @@
 import requests
 
 # -- Config & Constants (probably move to a config file later) --
-API_KEY = "4454dcf32c814005890be875073a14e1"
+API_KEY = "....................................."  # ← REPLACE THIS with your key
 BASE_URL = "https://api.spoonacular.com"
 
 # -- Get input from user --
