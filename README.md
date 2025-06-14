@@ -143,8 +143,7 @@ else:
       ----
 - Displays instructions if available.
 - **💾 9. Optionally Save to File:**
-  ```save_choice = input("\nWant to save this recipe to a text file? (yes/no): ").strip().lower()
-
+- ```save_choice = input("\nWant to save this recipe to a text file? (yes/no): ").strip().lower()
 if save_choice == "yes":
     try:
         with open("generated_recipe.txt", "w", encoding="utf-8") as f:
@@ -160,7 +159,7 @@ if save_choice == "yes":
         print("✅ All done! Saved to 'generated_recipe.txt'")
     except Exception as e:
         print(f"Something went wrong while saving the file: {e}")
-        ----
+
 -If user says "yes", it writes the recipe details into a file named generated_recipe.txt.
 - Proper error handling in case file write fails.
   
