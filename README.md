@@ -163,35 +163,32 @@ It returns detailed recipe information including ingredients, steps, time requir
 - Proper error handling in case file write fails.
   
 **✅ Conclusion**
-  This is a clean, well-structured script for building a basic AI-powered recipe generator based on user input ingredients using a real-world API.
-  Let me know if you want enhancements like:
-  Showing multiple recipe options
-  Using a GUI (Tkinter)
-  Sending recipe via email
-  CLI tool version with flags (e.g., --save, --limit)
+  - This is a clean, well-structured script for building a basic AI-powered recipe generator based on user input ingredients using a real-world API.
+  - Let me know if you want enhancements like:
+  - Showing multiple recipe options
+  - Using a GUI (Tkinter)
+  - Sending recipe via email
+  - CLI tool version with flags (e.g., --save, --limit)
 
 
 ## 📂 Output Sample
-=== Found a Recipe! ===
-Title: Grilled Lemon Garlic Chicken
-Used: ['chicken', 'garlic', 'lemon']
-Missing: ['olive oil', 'rosemary']
-Image Preview: https://spoonacular.com/recipeImages/123456-312x231.jpg
-
-=== Full Recipe Info ===
-Title: Grilled Lemon Garlic Chicken
-Time Required: 30 mins
-Servings: 4
-Link: https://spoonacular.com/recipes/123456
-
-Ingredients Needed:
+**=== Found a Recipe! ===**
+- Title: Grilled Lemon Garlic Chicken
+- Used: ['chicken', 'garlic', 'lemon']
+- Missing: ['olive oil', 'rosemary']
+- Image Preview: https://spoonacular.com/recipeImages/123456-312x231.jpg
+**=== Full Recipe Info ===**
+- Title: Grilled Lemon Garlic Chicken
+- Time Required: 30 mins
+- Servings: 4
+- Link: https://spoonacular.com/recipes/123456
+**Ingredients Needed:**
 - 2 boneless chicken breasts
 - 3 cloves garlic, minced
 - 1 lemon, juiced
 - 2 tbsp olive oil
 - 1 tsp rosemary
-
-How to Make It:
+**How to Make It:**
 1. Mix garlic, lemon juice, olive oil, and rosemary.
 2. Marinate chicken for 15 mins.
 3. Grill for 8-10 mins on each side.
