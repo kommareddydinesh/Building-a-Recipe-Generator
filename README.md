@@ -30,8 +30,9 @@ It returns detailed recipe information including ingredients, steps, time requir
 - Create an account on Spoonacular.
 - Navigate to your dashboard and get your free API key.
 - Replace the placeholder key in the script:
-       [API_KEY = "YOUR_API_KEY_HERE"]
-
+  ```python
+       API_KEY = "YOUR_API_KEY_HERE"
+---
 ## 🚀 How to Run
 - Save the script as recipe_finder.py.
 - Run the script in terminal or any Python environment:
