@@ -177,17 +177,20 @@ It returns detailed recipe information including ingredients, steps, time requir
 - Used: ['chicken', 'garlic', 'lemon']
 - Missing: ['olive oil', 'rosemary']
 - Image Preview: https://spoonacular.com/recipeImages/123456-312x231.jpg
+  
 **=== Full Recipe Info ===**
 - Title: Grilled Lemon Garlic Chicken
 - Time Required: 30 mins
 - Servings: 4
 - Link: https://spoonacular.com/recipes/123456
+  
 **Ingredients Needed:**
 - 2 boneless chicken breasts
 - 3 cloves garlic, minced
 - 1 lemon, juiced
 - 2 tbsp olive oil
 - 1 tsp rosemary
+  
 **How to Make It:**
 1. Mix garlic, lemon juice, olive oil, and rosemary.
 2. Marinate chicken for 15 mins.
