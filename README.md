@@ -70,13 +70,12 @@ It returns detailed recipe information including ingredients, steps, time requir
 - **🍽️ 4. Find Recipe Based on Ingredients:**
     ```python
     find_recipe_url = f"{BASE_URL}/recipes/findByIngredients"
-lookup_params = {
+    lookup_params = {
     "ingredients": user_input,
     "number": 1,
     "ranking": 1,
     "ignorePantry": True,
-    "apiKey": API_KEY
-}
+    "apiKey": API_KEY}
 - URL for the API call to search for recipes.
 - number=1: Only fetches one recipe.
 - ranking=1: Prioritizes recipes that use the most ingredients you have.
