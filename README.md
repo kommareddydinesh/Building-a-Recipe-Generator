@@ -92,29 +92,28 @@ It returns detailed recipe information including ingredients, steps, time requir
 - **🥇 6. Parse the First Recipe:**
   ```python
   recipe_data = search_result.json()
-if not recipe_data:
+  if not recipe_data:
     print("Couldn't find any recipe with those ingredients.")
-    exit()    
+    exit()
 - If the list is empty, no recipe was found.
   ```python
   first_recipe = recipe_data[0]
-print("\n=== Found a Recipe! ===")
-print(f"Title: {first_recipe['title']}")
-print(f"Used: {[item['name'] for item in first_recipe['usedIngredients']]}")
-print(f"Missing: {[item['name'] for item in first_recipe['missedIngredients']]}")
-print(f"Image Preview: {first_recipe['image']}")
+  print("\n=== Found a Recipe! ===")
+  print(f"Title: {first_recipe['title']}")
+  print(f"Used: {[item['name'] for item in first_recipe['usedIngredients']]}")
+  print(f"Missing: {[item['name'] for item in first_recipe['missedIngredients']]}")
+  print(f"Image Preview: {first_recipe['image']}")
 -Shows basic recipe details including:
     - Used & missing ingredients
     - Image preview link
 - **📋 7. Fetch Full Recipe Information:**
      ```python
      recipe_id = first_recipe['id']
-details_url = f"{BASE_URL}/recipes/{recipe_id}/information"
-details_params = {
+     details_url = f"{BASE_URL}/recipes/{recipe_id}/information"
+     details_params = {
     "includeNutrition": False,
-    "apiKey": API_KEY
-}
-details_response = requests.get(details_url, params=details_params)
+    "apiKey": API_KEY}
+    details_response = requests.get(details_url, params=details_params)
 - Uses the recipe ID to fetch full instructions, time, ingredients, servings, etc.
       ```python
   if details_response.status_code != 200:
@@ -124,28 +123,28 @@ details_response = requests.get(details_url, params=details_params)
 - **📤 8. Display Full Recipe:**
    ```python
    details = details_response.json()
-print("\n=== Full Recipe Info ===")
-print(f"Title: {details['title']}")
-print(f"Time Required: {details['readyInMinutes']} mins")
-print(f"Servings: {details['servings']}")
-print(f"Link: {details['sourceUrl']}")
+   print("\n=== Full Recipe Info ===")
+   print(f"Title: {details['title']}")
+   print(f"Time Required: {details['readyInMinutes']} mins")
+   print(f"Servings: {details['servings']}")
+   print(f"Link: {details['sourceUrl']}")
 - Displays title, time, servings, and a link to the full recipe.
-      ```print("\nIngredients Needed:")
-for ing in details['extendedIngredients']:
+      ```python
+  print("\nIngredients Needed:")
+  for ing in details['extendedIngredients']:
     print(f"- {ing['original']}")
-      ---
 - Shows a nicely formatted ingredients list.
     ```python
     print("\nHow to Make It:")
-if details.get('instructions'):
-    print(details['instructions'])
-else:
-    print("No instructions were provided. Might be a good time to improvise!")
+    if details.get('instructions'):
+        print(details['instructions'])
+    else:
+        print("No instructions were provided. Might be a good time to improvise!")
 - Displays instructions if available.
 - **💾 9. Optionally Save to File:**
   ```python
   save_choice = input("\nWant to save this recipe to a text file? (yes/no): ").strip().lower()
-if save_choice == "yes":
+  if save_choice == "yes":
     try:
         with open("generated_recipe.txt", "w", encoding="utf-8") as f:
             f.write(f"Title: {details['title']}\n")
